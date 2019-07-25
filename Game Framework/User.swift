@@ -40,4 +40,7 @@ class UserDefault {
     static func savePlayTime(_ played: Int) {
         UserDefaults.standard.set(played, forKey: playTimeKey)
     }
+    
+//    var recordGameName : [String] =
+//        UserDefaults.standard.array(forKey: "recordGameName") == nil ? [] : UserDefaults.standard.array(forKey: "recordGameName") as! [String]
 }

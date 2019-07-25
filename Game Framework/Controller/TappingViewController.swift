@@ -14,7 +14,7 @@ class TappingViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     var count = 0
-    var played = 0
+    var played = UserDefault.getPlayTime()
     var timer: Timer?
     var totalTime = 5
     
@@ -48,20 +48,23 @@ class TappingViewController: UIViewController {
         timeLabel.text = "剩餘時間: \(totalTime) 秒"
         if totalTime != 0 {
             totalTime -= 1
+            
         } else {
             endTime()
+            played += 1
+            UserDefault.savePlayTime(played)
             // show alert
             let alert = UIAlertController(title: "時間到", message: "成功次數：\(count)", preferredStyle: UIAlertController.Style.alert)
             let backAction = UIAlertAction(title: "Play Later", style: .default) { (action) in
                 //todo: push to home
-                self.played += 1
-
+                
                 self.navigationController?.popViewController(animated: true)
+                
             }
             
             let okAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
                 
-                self.played += 1
+                
                 self.totalTime = 5
                 self.startTime()
                 
@@ -71,7 +74,7 @@ class TappingViewController: UIViewController {
             
             alert.addAction(okAction)
             alert.addAction(backAction)
-            UserDefault.savePlayTime(played)
+           
             self.present(alert, animated: true, completion: nil)
             
         }
