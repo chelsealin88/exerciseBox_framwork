@@ -31,7 +31,11 @@ class TappingViewController: UIViewController {
     
     @objc func tapTime() {
         count = count + 1
-        UserDefault.saveScore(count)
+        
+        let currentCount = UserDefault.getScore()
+        if count > currentCount {
+            UserDefault.saveScore(count)
+        }
     }
     
     

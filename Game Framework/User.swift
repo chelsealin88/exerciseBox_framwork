@@ -24,7 +24,10 @@ class UserDefault {
     }
     
     static func saveScore(_ count: Int) {
-        UserDefaults.standard.set(count, forKey: countKey)
+        
+        //guard let lastScore = UserDefaults.standard.value(forKey: countKey) as? Int else { return }
+        UserDefaults.standard.set(count, forKey: countKey) // 2
+        
     }
     
     
@@ -41,6 +44,6 @@ class UserDefault {
         UserDefaults.standard.set(played, forKey: playTimeKey)
     }
     
-//    var recordGameName : [String] =
-//        UserDefaults.standard.array(forKey: "recordGameName") == nil ? [] : UserDefaults.standard.array(forKey: "recordGameName") as! [String]
+    //    var recordGameName : [String] =
+    //        UserDefaults.standard.array(forKey: "recordGameName") == nil ? [] : UserDefaults.standard.array(forKey: "recordGameName") as! [String]
 }
