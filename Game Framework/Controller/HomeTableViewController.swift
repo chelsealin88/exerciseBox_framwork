@@ -20,7 +20,6 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        tableView.reloadData()
         makeGameName()
 
     }
@@ -51,7 +50,10 @@ class HomeTableViewController: UITableViewController {
     
     func makeGameName() {
         
-        gameName.append(GameName(name: "🥶", score: UserDefault.getScore(), playedTime: UserDefault.getPlayTime()))
+        let score = UserDefault.getScore()
+        let playtime = UserDefault.getPlayTime()
+        
+        gameName.append(GameName(name: "🥶", score: score, playedTime: playtime))
         gameName.append(GameName(name: "🤗", score: 0, playedTime: 0))
     }
     
