@@ -10,7 +10,7 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
-    var gameName : [GameCreater] = [GameCreater]()
+    var gameCreater : [GameCreater] = [GameCreater]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,42 +20,43 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        print("view will appear")
-        gameName = GameData.getGame {
+        gameCreater = GameData.getGame {
             self.tableView.reloadData()
         }
-        
-        print(gameName)
-
-    }
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return gameName.count
     }
     
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return gameCreater.count
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
-        let name = gameName[indexPath.row]
-        
-        print(name)
-        
-        cell.updateCell(name)
-        
-        
-        // Configure the cell...
-        
+        let game = gameCreater[indexPath.row]
+       
+        cell.updateCell(game)
+    
         return cell
     }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        switch indexPath.row {
+        case 0:
             let vc = storyboard?.instantiateViewController(withIdentifier: "TappingViewController") as! TappingViewController
             navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "XXOOViewController") as! XXOOViewController
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
+       
+       
     }
     
-
     
     /*
      // Override to support conditional editing of the table view.

@@ -20,7 +20,8 @@ class TappingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        pieImage.image = UIImage(named: "pie")
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "wooden")!)
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapTime))
         pieImage.isUserInteractionEnabled = true
@@ -30,7 +31,24 @@ class TappingViewController: UIViewController {
     }
     
     @objc func tapTime() {
+        
         score = score + 1
+        
+        if score >= 5 {
+            pieImage.image = UIImage(named: "pie0")
+        }; if score >= 10 {
+            pieImage.image = UIImage(named: "pie2")
+        }; if score >= 15 {
+            pieImage.image = UIImage(named: "pie3")
+        }; if score >= 20 {
+            pieImage.image = UIImage(named: "pie4")
+        }; if score >= 25 {
+            pieImage.image = UIImage(named: "pie5")
+        }; if score >= 30 {
+            pieImage.image = UIImage(named: "pie6")
+        }; if score >= 40 {
+            pieImage.image = UIImage(named: "pie7")
+        }
         
         let currentScore = UserDefault.getScore()
         if score > currentScore {

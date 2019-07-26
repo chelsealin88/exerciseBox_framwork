@@ -28,7 +28,6 @@ class HomeTableViewCell: UITableViewCell {
     
     func updateCell(_ gameName: GameCreater) {
         
-        print("次數：\(gameName.playedTime)")
         gameNameLabel.text = gameName.name
         successTimeLabel.text = "Score: \(gameName.score) "
         playedTimeLabel.text = "Played: \(gameName.playedTime)"
