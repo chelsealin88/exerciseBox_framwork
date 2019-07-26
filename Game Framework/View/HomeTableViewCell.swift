@@ -26,8 +26,9 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateCell(_ gameName: GameName) {
+    func updateCell(_ gameName: GameCreater) {
         
+        print("次數：\(gameName.playedTime)")
         gameNameLabel.text = gameName.name
         successTimeLabel.text = "Score: \(gameName.score) "
         playedTimeLabel.text = "Played: \(gameName.playedTime)"

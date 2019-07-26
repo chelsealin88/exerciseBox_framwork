@@ -13,7 +13,7 @@ class TappingViewController: UIViewController {
     @IBOutlet weak var pieImage: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
-    var count = 0
+    var score = 0
     var played = UserDefault.getPlayTime()
     var timer: Timer?
     var totalTime = 5
@@ -30,11 +30,11 @@ class TappingViewController: UIViewController {
     }
     
     @objc func tapTime() {
-        count = count + 1
+        score = score + 1
         
-        let currentCount = UserDefault.getScore()
-        if count > currentCount {
-            UserDefault.saveScore(count)
+        let currentScore = UserDefault.getScore()
+        if score > currentScore {
+            UserDefault.saveScore(score)
         }
     }
     
@@ -58,7 +58,7 @@ class TappingViewController: UIViewController {
             played += 1
             UserDefault.savePlayTime(played)
             // show alert
-            let alert = UIAlertController(title: "時間到", message: "成功次數：\(count)", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "時間到", message: "成功次數：\(score)", preferredStyle: UIAlertController.Style.alert)
             let backAction = UIAlertAction(title: "Play Later", style: .default) { (action) in
                 //todo: push to home
                 

@@ -10,7 +10,7 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
-    var gameName : [GameName] = [GameName]()
+    var gameName : [GameCreater] = [GameCreater]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,12 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        makeGameName()
+        print("view will appear")
+        gameName = GameData.getGame {
+            self.tableView.reloadData()
+        }
+        
+        print(gameName)
 
     }
     // MARK: - Table view data source
@@ -33,6 +38,9 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
         let name = gameName[indexPath.row]
+        
+        print(name)
+        
         cell.updateCell(name)
         
         
@@ -47,15 +55,7 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
-    
-    func makeGameName() {
-        
-        let score = UserDefault.getScore()
-        let playtime = UserDefault.getPlayTime()
-        
-        gameName.append(GameName(name: "🥶", score: score, playedTime: playtime))
-        gameName.append(GameName(name: "🤗", score: 0, playedTime: 0))
-    }
+
     
     /*
      // Override to support conditional editing of the table view.
