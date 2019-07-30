@@ -1,4 +1,4 @@
-# exerciseBox_framwork
+# ExerciseBox framwork Challenge
 
 遊戲需求
 - 提供兩個遊戲
