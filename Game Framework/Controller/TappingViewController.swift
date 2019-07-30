@@ -21,12 +21,9 @@ class TappingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pieImage.image = UIImage(named: "pie")
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "wooden")!)
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapTime))
-        pieImage.isUserInteractionEnabled = true
-        pieImage.addGestureRecognizer(singleTap)
         
+        setGame()
         startTime()
     }
     
@@ -58,6 +55,15 @@ class TappingViewController: UIViewController {
     
     
     
+    func setGame() {
+        score = 0
+        pieImage.image = UIImage(named: "pie")
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapTime))
+        pieImage.isUserInteractionEnabled = true
+        pieImage.addGestureRecognizer(singleTap)
+
+    }
+    
     
     // MARK: - 倒數器
     func startTime(){
@@ -87,11 +93,11 @@ class TappingViewController: UIViewController {
             
             let okAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
                 
-                
+                //todo: 重置遊戲
+                self.setGame()
                 self.totalTime = 5
                 self.startTime()
                 
-                // save played time
                 
             }
             
