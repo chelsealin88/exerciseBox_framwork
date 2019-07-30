@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TappingViewController: UIViewController {
+class TappingViewController: UIViewController, GameSystem {    
+    
 
     @IBOutlet weak var pieImage: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -22,9 +23,8 @@ class TappingViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "wooden")!)
-        
         setGame()
-        startTime()
+        setTime()
     }
     
     @objc func tapTime() {
@@ -55,7 +55,9 @@ class TappingViewController: UIViewController {
     
     
     
+    // 設定每一局遊戲
     func setGame() {
+        
         score = 0
         pieImage.image = UIImage(named: "pie")
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapTime))
@@ -65,12 +67,11 @@ class TappingViewController: UIViewController {
     }
     
     
-    // MARK: - 倒數器
-    func startTime(){
+    // 遊戲倒數
+    func setTime(){
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
-    
     
     @objc func updateTime(){
         
@@ -80,23 +81,23 @@ class TappingViewController: UIViewController {
             
         } else {
             endTime()
+            //時間到 遊玩次數+1
             played += 1
             UserDefault.savePlayTime(played)
             // show alert
             let alert = UIAlertController(title: "時間到", message: "成功次數：\(score)", preferredStyle: UIAlertController.Style.alert)
             let backAction = UIAlertAction(title: "Play Later", style: .default) { (action) in
-                //todo: push to home
-                
                 self.navigationController?.popViewController(animated: true)
                 
             }
             
             let okAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
                 
-                //todo: 重置遊戲
+                // 重置遊戲
                 self.setGame()
+                // 重置時間
                 self.totalTime = 5
-                self.startTime()
+                self.setTime()
                 
                 
             }

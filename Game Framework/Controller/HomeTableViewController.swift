@@ -26,7 +26,6 @@ class HomeTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return gameCreater.count
@@ -42,13 +41,12 @@ class HomeTableViewController: UITableViewController {
     }
     
     
+    
+    // 判斷Cell並推到各自遊戲頁面
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let vc = storyboard?.instantiateViewController(withIdentifier: "TappingViewController") as! TappingViewController
-            navigationController?.pushViewController(vc, animated: true)
-        case 1:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "XXOOViewController") as! XXOOViewController
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

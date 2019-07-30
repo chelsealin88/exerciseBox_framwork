@@ -7,7 +7,20 @@
 //
 
 import Foundation
+import UIKit
 
+
+protocol GameSystem: UIViewController {
+    
+    var score : Int  { get set }
+    var played: Int  { get set }
+    var timer: Timer? { get set }
+    //遊戲設定
+    func setGame()
+    //時間設定
+    func setTime()
+    
+}
 
 struct GameCreater {
     
@@ -18,23 +31,28 @@ struct GameCreater {
 }
 
 
+
+//創建遊戲
 class GameData {
     
     static func getGame(completion: @escaping () -> Void) -> [GameCreater] {
         
         var gameName : [GameCreater] = []
         
+        //取得遊戲紀錄&最高分資料
         let score = UserDefault.getScore()
         let playtime = UserDefault.getPlayTime()
         
+        //新增遊戲
         let game1 = GameCreater(name: "PIE Eater 🍕", score: score, playedTime: playtime)
-        let game2 = GameCreater(name: "圈圈擦擦 OOXX", score: 0, playedTime: 0)
         
         gameName.append(game1)
-        gameName.append(game2)
         
         completion()
         return gameName
     
     }
 }
+
+
+

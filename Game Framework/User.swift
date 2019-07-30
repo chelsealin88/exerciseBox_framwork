@@ -8,13 +8,13 @@
 
 import Foundation
 
-
+// 用Userdefault存取遊戲紀錄&最高分
 class UserDefault {
     
     static let countKey = "countKey"
     static let playTimeKey = "playTimeKey"
     
-    // score
+    // 取得最高分資料
     static func getScore() -> Int {
         
         if let count = UserDefaults.standard.value(forKey: countKey) as? Int {
@@ -23,15 +23,16 @@ class UserDefault {
         return 0
     }
     
+    // 儲存最高分資料
     static func saveScore(_ count: Int) {
         
-        //guard let lastScore = UserDefaults.standard.value(forKey: countKey) as? Int else { return }
         UserDefaults.standard.set(count, forKey: countKey) // 2
         
     }
     
+ 
     
-    // played time
+    // 取得遊玩次數
     static func getPlayTime() -> Int {
         
         if  let playTime = UserDefaults.standard.value(forKey: playTimeKey) as? Int {
@@ -40,10 +41,9 @@ class UserDefault {
         return 0
     }
     
+    // 儲存遊玩次數
     static func savePlayTime(_ played: Int) {
         UserDefaults.standard.set(played, forKey: playTimeKey)
     }
-    
-    //    var recordGameName : [String] =
-    //        UserDefaults.standard.array(forKey: "recordGameName") == nil ? [] : UserDefaults.standard.array(forKey: "recordGameName") as! [String]
+
 }
