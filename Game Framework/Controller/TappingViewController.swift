@@ -14,7 +14,7 @@ class TappingViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     var score = 0
-    var played = UserDefault.getPlayTime()
+    var played = UserDefault.getPlayTime() // 取得遊戲次數紀錄
     var timer: Timer?
     var totalTime = 5
     
@@ -65,6 +65,7 @@ class TappingViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
+    
     @objc func updateTime(){
         
         timeLabel.text = "剩餘時間: \(totalTime) 秒"
@@ -109,17 +110,5 @@ class TappingViewController: UIViewController {
     
 }
 
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 

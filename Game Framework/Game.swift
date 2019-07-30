@@ -27,8 +27,8 @@ class GameData {
         let score = UserDefault.getScore()
         let playtime = UserDefault.getPlayTime()
         
-        let game1 = GameCreater(name: "PIE Eater 噬派者🍕", score: score, playedTime: playtime)
-        let game2 = GameCreater(name: "圈圈擦擦⭕️❌", score: 0, playedTime: 0)
+        let game1 = GameCreater(name: "PIE Eater 🍕", score: score, playedTime: playtime)
+        let game2 = GameCreater(name: "圈圈擦擦 OOXX", score: 0, playedTime: 0)
         
         gameName.append(game1)
         gameName.append(game2)

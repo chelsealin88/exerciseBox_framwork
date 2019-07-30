@@ -19,6 +19,8 @@ class XXOOViewController: UIViewController {
             
             gameState[sender.tag-1] = activityPlayer
             
+            print(activityPlayer)
+            
             if (activityPlayer == 1) {
                 sender.setImage(UIImage(named: "X"), for: UIControl.State())
                 activityPlayer = 2
@@ -31,7 +33,6 @@ class XXOOViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
