@@ -12,8 +12,11 @@ import UIKit
 
 protocol GameSystem: UIViewController {
     
+    // 分數
     var score : Int  { get set }
+    // 遊玩紀錄
     var played: Int  { get set }
+    // 時間
     var timer: Timer? { get set }
     //遊戲設定
     func setGame()

@@ -22,9 +22,9 @@ class TappingViewController: UIViewController, GameSystem {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "wooden")!)
         setGame()
         setTime()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "wooden")!)
     }
     
     @objc func tapTime() {
@@ -47,6 +47,7 @@ class TappingViewController: UIViewController, GameSystem {
             pieImage.image = UIImage(named: "pie7")
         }
         
+        // 判斷最高分數
         let currentScore = UserDefault.getScore()
         if score > currentScore {
             UserDefault.saveScore(score)
